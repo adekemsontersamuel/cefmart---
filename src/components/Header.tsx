@@ -293,7 +293,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Main Header */}
       <div className="bg-[#e7e9ec] border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex h-16 items-center justify-between max-md:flex-wrap max-md:gap-3 max-md:py-3">
             {/* Logo - EXACTLY AS REQUESTED */}
             <button
               onClick={() => doNavigate("home")}
@@ -302,12 +302,12 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src="/logo.png"
                 alt="CEFMART Logo"
-                className="h-16 w-auto object-contain hover:opacity-90 transition-opacity"
+                className="h-16 w-auto object-contain transition-opacity hover:opacity-90 max-md:h-12"
               />
             </button>
 
             {/* Search Bar */}
-            <div className="flex-1 max-w-2xl mx-8">
+            <div className="mx-8 max-w-2xl flex-1 max-md:order-3 max-md:mx-0 max-md:w-full">
               <div className="relative">
                 <input
                   type="text"
@@ -321,21 +321,21 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Action Icons */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 max-md:space-x-2">
               {/* Login & Register Buttons */}
               <div className="flex items-center space-x-2">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => doNavigate("login")}
-                  className="text-sm h-9 px-4"
+                  className="text-sm h-9 px-4 max-md:h-8 max-md:px-3 max-md:text-xs"
                 >
                   Login
                 </Button>
                 <Button
                   size="sm"
                   onClick={() => doNavigate("register")}
-                  className="text-sm h-9 px-4 bg-green-600 hover:bg-green-700"
+                  className="text-sm h-9 px-4 bg-green-600 hover:bg-green-700 max-md:h-8 max-md:px-3 max-md:text-xs"
                 >
                   Register
                 </Button>
@@ -357,7 +357,7 @@ export const Header: React.FC<HeaderProps> = ({
               )}
 
               {/* Wishlist */}
-              <button className="p-2 text-gray-600 hover:text-cyan-500 transition-colors">
+              <button className="hidden p-2 text-gray-600 transition-colors hover:text-cyan-500 sm:block">
                 <Heart className="h-6 w-6" />
               </button>
 
@@ -382,7 +382,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Navigation Bar */}
       <div className="bg-gray-100 border-b relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-12">
+          <div className="flex h-12 items-center">
             {/* --- All Categories (Functional Dropdown) --- */}
             <div className="relative" ref={categoryRef}>
               <button
@@ -411,6 +411,46 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Dropdown Menu Content */}
               {isCategoryOpen && (
                 <div className="absolute top-full left-0 mt-1 w-64 bg-white shadow-xl border border-gray-200 rounded-md z-50 overflow-visible">
+                  <div className="border-b border-gray-200 p-2 md:hidden">
+                    <div className="grid grid-cols-2 gap-2">
+                      <button
+                        onClick={() => {
+                          doNavigate("about");
+                          setIsCategoryOpen(false);
+                        }}
+                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                      >
+                        About
+                      </button>
+                      <button
+                        onClick={() => {
+                          doNavigate("products");
+                          setIsCategoryOpen(false);
+                        }}
+                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                      >
+                        Shop
+                      </button>
+                      <button
+                        onClick={() => {
+                          doNavigate("products");
+                          setIsCategoryOpen(false);
+                        }}
+                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                      >
+                        Product
+                      </button>
+                      <button
+                        onClick={() => {
+                          doNavigate("about");
+                          setIsCategoryOpen(false);
+                        }}
+                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                      >
+                        FAQs
+                      </button>
+                    </div>
+                  </div>
                   <div className="py-1">
                     {CATEGORIES.map((category) => (
                       <div
@@ -466,7 +506,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* --------------------------- */}
 
             {/* Navigation Links (Kept exactly as requested) */}
-            <nav className="flex space-x-8 ml-8">
+            <nav className="flex space-x-8 ml-8 max-md:hidden">
               <button
                 onClick={() => doNavigate("home")}
                 className="text-gray-700 hover:text-cyan-500 transition-colors py-2 border-b-2 border-transparent hover:border-cyan-500"

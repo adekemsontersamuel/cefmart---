@@ -73,18 +73,18 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
   ];
 
   return (
-    <div className="space-y-14">
+    <div className="space-y-14 max-sm:space-y-10">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20">
+      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20 max-lg:py-16 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-sm:gap-8">
+            <div className="space-y-8 max-sm:space-y-6">
               <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl tracking-tight">
+                <h1 className="text-4xl lg:text-6xl tracking-tight max-sm:text-3xl">
                   Fresh From Farm
                   <span className="text-green-600"> To Your Table</span>
                 </h1>
-                <p className="text-xl text-gray-600 max-w-lg">
+                <p className="text-xl text-gray-600 max-w-lg max-sm:text-base">
                   Connect directly with local farmers and trusted vendors. Get
                   the freshest produce, grains, and more delivered straight to
                   your doorstep.
@@ -109,7 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
                 </Button>
               </div>
 
-              <div className="flex items-center space-x-8 pt-4">
+              <div className="flex items-center space-x-8 pt-4 max-sm:flex-wrap max-sm:gap-6 max-sm:space-x-0 max-sm:pt-2">
                 <div className="text-center">
                   <div className="text-2xl">500+</div>
                   <div className="text-sm text-gray-600">Trusted Vendors</div>
@@ -133,7 +133,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
                 alt="Fresh farm produce"
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
-              <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
+              <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg max-sm:bottom-3 max-sm:left-3 max-sm:p-3">
                 <div className="flex items-center space-x-2">
                   <Star className="h-5 w-5 text-yellow-500 fill-current" />
                   <span className="text-sm">4.9/5 Customer Rating</span>
@@ -145,7 +145,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16">
+      <section className="py-16 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl lg:text-4xl">Shop by Category</h2>
@@ -175,9 +175,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-between items-center mb-12 max-md:flex-col max-md:items-start max-md:gap-4 max-md:mb-8">
             <div>
               <h2 className="text-3xl lg:text-4xl">Featured Products</h2>
               <p className="text-xl text-gray-600 mt-2">
@@ -238,9 +238,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Best Seller Products */}
-      <section className="py-16">
+      <section className="py-16 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-between items-center mb-12 max-md:flex-col max-md:items-start max-md:gap-4 max-md:mb-8">
             <div>
               <h2 className="text-3xl lg:text-4xl">Best Seller Products</h2>
               <p className="text-xl text-gray-600 mt-2">
@@ -306,9 +306,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Recent Added Products */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-between items-center mb-12 max-md:flex-col max-md:items-start max-md:gap-4 max-md:mb-8">
             <div>
               <h2 className="text-3xl lg:text-4xl">Recently Added Products</h2>
               <p className="text-xl text-gray-600 mt-2">
@@ -374,7 +374,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
+      <section className="py-16 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl lg:text-4xl">Why Choose Cefmart?</h2>
@@ -399,7 +399,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Featured Vendors */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 max-sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl lg:text-4xl">Trusted AgriPartners</h2>
