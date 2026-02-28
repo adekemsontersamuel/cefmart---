@@ -43,7 +43,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
 
   if (cartItems.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 max-sm:py-10">
         <div className="text-center space-y-6">
           <ShoppingBag className="h-24 w-24 text-gray-300 mx-auto" />
           <div>
@@ -59,19 +59,19 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl mb-8">Shopping Cart</h1>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 max-sm:py-6">
+      <h1 className="text-3xl mb-8 max-sm:text-2xl">Shopping Cart</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-6">
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-6 max-sm:p-4">
               <h2 className="text-xl mb-6">Cart Items ({cartItems.length})</h2>
               
               <div className="space-y-6">
                 {cartItems.map((item) => (
-                  <div key={item.product.id} className="flex items-center space-x-4">
+                  <div key={item.product.id} className="flex items-start space-x-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-3">
                     <img
                       src={item.product.image}
                       alt={item.product.name}
@@ -84,7 +84,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
                       <div className="text-lg">{formatNaira(item.product.price)} {item.product.unit}</div>
                     </div>
                     
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-3 max-sm:w-full max-sm:justify-between max-sm:space-x-2">
                       <div className="flex items-center border border-gray-300 rounded-lg">
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
@@ -101,7 +101,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
                         </button>
                       </div>
                       
-                      <div className="text-lg min-w-20 text-right">
+                      <div className="text-lg min-w-20 text-right max-sm:min-w-0">
                         {formatNaira(item.product.price * item.quantity)}
                       </div>
                       
@@ -120,14 +120,14 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
 
           {/* Delivery Method */}
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-6 max-sm:p-4">
               <h3 className="text-lg mb-4">Delivery Method</h3>
               
               <RadioGroup value={deliveryMethod} onValueChange={setDeliveryMethod}>
                 <div className="flex items-center space-x-2 p-3 border rounded-lg">
                   <RadioGroupItem value="delivery" id="delivery" />
                   <Label htmlFor="delivery" className="flex-1 cursor-pointer">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
                       <div className="flex items-center space-x-3">
                         <Truck className="h-5 w-5 text-green-600" />
                         <div>
@@ -143,7 +143,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
                 <div className="flex items-center space-x-2 p-3 border rounded-lg">
                   <RadioGroupItem value="pickup" id="pickup" />
                   <Label htmlFor="pickup" className="flex-1 cursor-pointer">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
                       <div className="flex items-center space-x-3">
                         <ShoppingBag className="h-5 w-5 text-green-600" />
                         <div>
@@ -162,7 +162,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
           {/* Delivery Address */}
           {deliveryMethod === 'delivery' && (
             <Card>
-              <CardContent className="p-6">
+              <CardContent className="p-6 max-sm:p-4">
                 <h3 className="text-lg mb-4">Delivery Address</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -215,8 +215,8 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <Card className="sticky top-8">
-            <CardContent className="p-6 space-y-6">
+          <Card className="lg:sticky lg:top-8">
+            <CardContent className="p-6 space-y-6 max-sm:p-4">
               <h3 className="text-xl">Order Summary</h3>
               
               <div className="space-y-3">
@@ -244,14 +244,14 @@ export const Cart: React.FC<CartProps> = ({ cartItems, updateQuantity, navigateT
               {/* Promo Code */}
               <div className="space-y-2">
                 <Label htmlFor="promo">Promo Code</Label>
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-2">
                   <Input
                     id="promo"
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value)}
                     placeholder="Enter code"
                   />
-                  <Button variant="outline" size="sm">Apply</Button>
+                  <Button variant="outline" size="sm" className="max-sm:w-full">Apply</Button>
                 </div>
                 <p className="text-xs text-gray-600">Try: FRESH10 for 10% off</p>
               </div>

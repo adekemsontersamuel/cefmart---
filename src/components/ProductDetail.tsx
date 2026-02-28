@@ -71,7 +71,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 max-sm:py-6">
       {/* Back Button */}
       <button
         onClick={() => navigateTo('products')}
@@ -81,18 +81,18 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
         <span>Back to Products</span>
       </button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Product Images */}
         <div className="space-y-4">
           <div className="aspect-w-1 aspect-h-1">
             <img
               src={productImages[selectedImage]}
               alt={product.name}
-              className="w-full h-96 object-cover rounded-lg"
+              className="h-96 w-full rounded-lg object-cover max-sm:h-72"
             />
           </div>
           
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4 max-sm:gap-2">
             {productImages.map((image, index) => (
               <button
                 key={index}
@@ -114,17 +114,17 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
         {/* Product Info */}
         <div className="space-y-6">
           <div className="space-y-4">
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between gap-2">
               <div>
-                <h1 className="text-3xl">{product.name}</h1>
-                <p className="text-xl text-gray-600 mt-1">{product.vendor}</p>
+                <h1 className="text-3xl max-sm:text-2xl">{product.name}</h1>
+                <p className="mt-1 text-xl text-gray-600 max-sm:text-base">{product.vendor}</p>
               </div>
               <button className="p-2 hover:bg-gray-100 rounded-full">
                 <Heart className="h-6 w-6 text-gray-400" />
               </button>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0">
               <div className="flex items-center space-x-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -141,7 +141,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
               <span className="text-gray-600">({product.reviews} reviews)</span>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0">
               <Badge variant="secondary" className="text-sm">
                 {product.freshness}
               </Badge>
@@ -156,12 +156,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
 
           {/* Price and Add to Cart */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0">
               <div className="text-3xl text-green-600">{formatNaira(product.price)}</div>
               <div className="text-lg text-gray-600">{product.unit}</div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 max-sm:flex-col max-sm:items-stretch max-sm:space-x-0">
               <div className="flex items-center border border-gray-300 rounded-lg">
                 <button
                   onClick={decrementQuantity}
@@ -178,7 +178,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
                 </button>
               </div>
               
-              <Button size="lg" onClick={handleAddToCart} className="flex-1">
+              <Button size="lg" onClick={handleAddToCart} className="flex-1 max-sm:w-full">
                 Add to Cart - {formatNaira(product.price * quantity)}
               </Button>
             </div>
@@ -191,7 +191,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
           <Separator />
 
           {/* Features */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="text-center p-4 bg-green-50 rounded-lg">
               <Truck className="h-6 w-6 text-green-600 mx-auto mb-2" />
               <div className="text-sm">Fresh Delivery</div>
@@ -214,7 +214,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
       {/* Product Details Tabs */}
       <div className="mt-16">
         <Tabs defaultValue="description" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid h-auto w-full grid-cols-1 sm:grid-cols-3">
             <TabsTrigger value="description">Description</TabsTrigger>
             <TabsTrigger value="vendor">Vendor Info</TabsTrigger>
             <TabsTrigger value="reviews">Reviews ({product.reviews})</TabsTrigger>
@@ -244,14 +244,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
           <TabsContent value="vendor" className="mt-6">
             <Card>
               <CardContent className="p-6 space-y-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-3">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
                     <span className="text-2xl">🏪</span>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl">{vendorInfo.name}</h3>
                     <p className="text-gray-600">{vendorInfo.type} • {vendorInfo.location}</p>
-                    <div className="flex items-center space-x-4 mt-2">
+                    <div className="mt-2 flex items-center space-x-4 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0">
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-500 fill-current" />
                         <span>{vendorInfo.rating}</span>
@@ -281,7 +281,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
               {/* Review Summary */}
               <Card>
                 <CardContent className="p-6">
-                  <div className="flex items-center space-x-8">
+                  <div className="flex items-center space-x-8 max-sm:flex-col max-sm:items-start max-sm:space-x-0 max-sm:space-y-4">
                     <div className="text-center">
                       <div className="text-4xl">{product.rating}</div>
                       <div className="flex items-center justify-center space-x-1 mt-1">
@@ -324,7 +324,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, navigateT
                 {reviews.map((review) => (
                   <Card key={review.id}>
                     <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-3">
+                      <div className="mb-3 flex items-start justify-between gap-3 max-sm:flex-col max-sm:items-start">
                         <div>
                           <div className="flex items-center space-x-2">
                             <span>{review.user}</span>

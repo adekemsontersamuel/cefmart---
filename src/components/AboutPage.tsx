@@ -128,13 +128,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section - Clean & Modern */}
-      <section className="relative bg-gray-50 py-20 px-4">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+      <section className="relative bg-gray-50 py-20 px-4 max-sm:py-12">
+        <div className="max-w-5xl mx-auto text-center space-y-8 max-sm:space-y-5">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-sm:text-3xl">
             Connecting Farms to Families Across Nigeria
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed max-sm:text-base">
             From Benue to the world, CEFMART is redefining agro-commerce with an
             emphasis on quality, variety, and convenience. We are on a mission
             to deliver exceptional fresh produce right to your doorstep—wherever
@@ -145,31 +145,31 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
 
       {/* Hero Image with Stats Overlay */}
       <section className="relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 max-sm:-mt-4">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             {/* Image Placeholder with Gradient Overlay */}
-            <div className="relative bg-gradient-to-br from-green-500 to-emerald-700 h-[500px] flex items-center justify-center">
+            <div className="relative bg-gradient-to-br from-green-500 to-emerald-700 h-[500px] flex items-center justify-center max-sm:h-[340px]">
               <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative z-10 text-center text-white p-8">
-                <Leaf className="h-32 w-32 mx-auto mb-6 opacity-40" />
-                <h3 className="text-4xl font-bold mb-4">
+              <div className="relative z-10 text-center text-white p-8 max-sm:p-4">
+                <Leaf className="h-32 w-32 mx-auto mb-6 opacity-40 max-sm:h-20 max-sm:w-20 max-sm:mb-4" />
+                <h3 className="text-4xl font-bold mb-4 max-sm:text-2xl">
                   Farm Fresh Excellence
                 </h3>
-                <p className="text-xl opacity-90">
+                <p className="text-xl opacity-90 max-sm:text-base">
                   From our fields to your table
                 </p>
               </div>
             </div>
 
             {/* Stats Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-              <div className="max-w-5xl mx-auto grid grid-cols-2 gap-8">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 max-sm:p-4">
+              <div className="max-w-5xl mx-auto grid grid-cols-2 gap-8 max-sm:gap-4">
                 {heroStats.map((stat, index) => (
                   <div key={index} className="text-center text-white">
                     <div className="flex items-center justify-center mb-2 opacity-80">
                       {stat.icon}
                     </div>
-                    <div className="text-4xl md:text-5xl font-bold mb-2">
+                    <div className="text-4xl md:text-5xl font-bold mb-2 max-sm:text-2xl">
                       {stat.value}
                     </div>
                     <div className="text-sm md:text-base opacity-90">
@@ -184,9 +184,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Mission Section - Dark Background */}
-      <section className="bg-gray-900 text-white py-20 px-4 mt-20">
+      <section className="bg-gray-900 text-white py-20 px-4 mt-20 max-sm:mt-12 max-sm:py-14">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Mission</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 max-sm:text-3xl">Our Mission</h2>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             At CEFMART, our mission is to deliver exceptional fresh produce by
             focusing on quality, variety, and sustainability. We are committed
@@ -199,7 +199,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Stats Grid */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white max-sm:py-14">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -209,7 +209,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
                     {stat.icon}
                   </div>
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2 max-sm:text-3xl">
                   {stat.value}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
@@ -220,13 +220,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Values Grid */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-50 max-sm:py-14">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16 max-sm:mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 max-sm:text-3xl">
               Why Choose CEFMART?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto max-sm:text-base">
               We're revolutionizing how Nigeria shops for fresh produce through
               innovation, integrity, and community impact.
             </p>
@@ -252,7 +252,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Trust Guarantees */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white max-sm:py-14">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
@@ -298,7 +298,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Alpha N&S Technologies Highlight */}
-      <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+      <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 max-sm:py-14">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-white space-y-6">
@@ -309,7 +309,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
                 </span>
               </div>
 
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight max-sm:text-3xl">
                 Powered by Alpha N&S Technologies
               </h2>
 
@@ -346,7 +346,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
                   href="https://alphans.tech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-white border-2 border-white/30 bg-white/10 hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all"
+                  className="inline-flex items-center text-white border-2 border-white/30 bg-white/10 hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all max-sm:w-full max-sm:justify-center"
                 >
                   Visit Alpha N&S Tech
                   <TrendingUp className="ml-2 h-5 w-5" />
@@ -355,9 +355,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
             </div>
 
             <div className="relative">
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl border-2 border-white/20 p-12 text-center">
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl border-2 border-white/20 p-12 text-center max-sm:p-8">
                 <Cpu className="h-32 w-32 mx-auto text-white/90 mb-6" />
-                <h3 className="text-4xl font-bold text-white mb-4">
+                <h3 className="text-4xl font-bold text-white mb-4 max-sm:text-3xl">
                   ALPHA N&S
                 </h3>
                 <p className="text-white/80 text-lg">
@@ -375,13 +375,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* Strategic Partners */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white max-sm:py-14">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16 max-sm:mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 max-sm:text-3xl">
               Our Strategic Partners
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 max-sm:text-base">
               Collaboration drives innovation and creates lasting impact
             </p>
           </div>
@@ -390,9 +390,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
             {partners.map((partner, index) => (
               <div
                 key={index}
-                className={`bg-white p-10 rounded-2xl border-2 ${partner.borderColor} shadow-md hover:shadow-xl transition-all duration-300`}
+                className={`bg-white p-10 rounded-2xl border-2 ${partner.borderColor} shadow-md hover:shadow-xl transition-all duration-300 max-sm:p-6`}
               >
-                <div className="flex items-start space-x-6">
+                <div className="flex items-start space-x-6 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
                   <div
                     className={`flex-shrink-0 ${partner.bgColor} p-5 rounded-2xl border ${partner.borderColor}`}
                   >
@@ -400,7 +400,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
                   </div>
 
                   <div className="flex-1 space-y-3">
-                    <h3 className="text-2xl font-bold text-gray-900">
+                    <h3 className="text-2xl font-bold text-gray-900 max-sm:text-xl">
                       {partner.name}
                     </h3>
                     <div className="text-green-600 text-sm font-bold uppercase tracking-wide">
@@ -418,25 +418,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 bg-green-600">
+      <section className="py-24 px-4 bg-green-600 max-sm:py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight max-sm:text-3xl">
             Ready to Experience Farm-Fresh Quality?
           </h2>
-          <p className="text-green-50 text-xl mb-10 leading-relaxed">
+          <p className="text-green-50 text-xl mb-10 leading-relaxed max-sm:text-base">
             Join thousands of satisfied customers who trust CEFMART for premium
             quality, unbeatable freshness, and community-driven values.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
             <button
-              className="bg-white text-green-700 hover:bg-green-50 font-bold px-10 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all text-lg"
+              className="bg-white text-green-700 hover:bg-green-50 font-bold px-10 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all text-lg max-sm:w-full max-sm:text-base"
               onClick={() => navigateTo("products")}
             >
               Start Shopping Now
             </button>
             <button
-              className="border-2 border-white text-white hover:bg-white/10 font-bold px-10 py-4 rounded-full text-lg transition-all"
+              className="border-2 border-white text-white hover:bg-white/10 font-bold px-10 py-4 rounded-full text-lg transition-all max-sm:w-full max-sm:text-base"
               onClick={() => navigateTo("register")}
             >
               Become a Vendor

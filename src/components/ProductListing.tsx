@@ -85,26 +85,26 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 max-sm:py-6">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-8">
+      <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h1 className="text-3xl">{category || 'All Products'}</h1>
+          <h1 className="text-3xl max-sm:text-2xl">{category || 'All Products'}</h1>
           <p className="text-gray-600 mt-1">{sortedProducts.length} products found</p>
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 max-sm:flex-col max-sm:items-stretch">
           {/* View Mode Toggle */}
-          <div className="flex border rounded-lg p-1">
+          <div className="flex border rounded-lg p-1 max-sm:w-full">
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded ${viewMode === 'grid' ? 'bg-gray-100' : ''}`}
+              className={`rounded p-2 max-sm:flex-1 ${viewMode === 'grid' ? 'bg-gray-100' : ''}`}
             >
               <Grid className="h-4 w-4" />
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded ${viewMode === 'list' ? 'bg-gray-100' : ''}`}
+              className={`rounded p-2 max-sm:flex-1 ${viewMode === 'list' ? 'bg-gray-100' : ''}`}
             >
               <List className="h-4 w-4" />
             </button>
@@ -112,7 +112,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
 
           {/* Sort By */}
           <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 max-sm:w-full">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
@@ -129,7 +129,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <div className="lg:col-span-1">
-          <Card className="p-6 space-y-6">
+          <Card className="space-y-6 p-6 max-sm:p-4">
             <div className="flex items-center gap-2">
               <Filter className="h-5 w-5" />
               <h3 className="text-lg">Filters</h3>
@@ -220,7 +220,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                     />
                   </div>
                   <CardContent className="p-4 space-y-3">
-                    <div className="flex justify-between items-start">
+                    <div className="flex items-start justify-between gap-2">
                       <div>
                         <h3 className="text-lg">{product.name}</h3>
                         <p className="text-sm text-gray-600">{product.vendor}</p>
@@ -230,10 +230,10 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                       </Badge>
                     </div>
                     
-                    <div className="flex items-center space-x-2">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <Star className="h-4 w-4 text-yellow-500 fill-current" />
                       <span className="text-sm">{product.rating} ({product.reviews})</span>
-                      <div className="flex items-center text-gray-500 text-sm ml-auto">
+                      <div className="ml-auto flex items-center text-sm text-gray-500 max-sm:ml-0">
                         <MapPin className="h-3 w-3 mr-1" />
                         {product.location}
                       </div>
@@ -267,7 +267,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                   onClick={() => navigateTo('product-detail', product.id)}
                 >
                   <CardContent className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                    <div className="grid grid-cols-1 gap-6 items-center md:grid-cols-4">
                       <div className="md:col-span-1">
                         <img
                           src={product.image}
@@ -277,7 +277,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                       </div>
                       
                       <div className="md:col-span-2 space-y-2">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between gap-2 max-sm:flex-col max-sm:items-start">
                           <div>
                             <h3 className="text-xl">{product.name}</h3>
                             <p className="text-gray-600">{product.vendor}</p>
@@ -287,7 +287,7 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                         
                         <p className="text-gray-600 text-sm">{product.description}</p>
                         
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0">
                           <div className="flex items-center space-x-1">
                             <Star className="h-4 w-4 text-yellow-500 fill-current" />
                             <span className="text-sm">{product.rating} ({product.reviews})</span>
@@ -299,12 +299,13 @@ export const ProductListing: React.FC<ProductListingProps> = ({ navigateTo, cate
                         </div>
                       </div>
                       
-                      <div className="md:col-span-1 text-right space-y-3">
+                      <div className="space-y-3 text-left md:col-span-1 md:text-right">
                         <div>
                           <div className="text-2xl">{formatNaira(product.price)}</div>
                           <div className="text-sm text-gray-600">{product.unit}</div>
                         </div>
                         <Button 
+                          className="max-sm:w-full"
                           onClick={(e) => {
                             e.stopPropagation();
                             addToCart(product, 1);

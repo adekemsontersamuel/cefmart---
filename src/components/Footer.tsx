@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
         <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(2,6,23,0.06)_1px,transparent_1px)] [background-size:220px_220px]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-emerald-500/10 via-transparent to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 max-sm:py-12">
           <div className="border-y border-slate-200 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
             <div className="space-y-6">

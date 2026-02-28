@@ -194,10 +194,10 @@ export const Register: React.FC<RegisterProps> = ({ navigateTo }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 max-sm:py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl text-gray-900">Create your account</h2>
+          <h2 className="text-3xl text-gray-900 max-sm:text-2xl">Create your account</h2>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{' '}
             <button
@@ -213,11 +213,11 @@ export const Register: React.FC<RegisterProps> = ({ navigateTo }) => {
           <CardHeader>
             <CardTitle className="text-center">Join CEFMART</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="max-sm:px-4">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="customer">Customer Account</TabsTrigger>
-                <TabsTrigger value="vendor">Vendor Account</TabsTrigger>
+              <TabsList className="grid h-auto w-full grid-cols-2">
+                <TabsTrigger value="customer" className="text-xs sm:text-sm">Customer Account</TabsTrigger>
+                <TabsTrigger value="vendor" className="text-xs sm:text-sm">Vendor Account</TabsTrigger>
               </TabsList>
 
               <TabsContent value="customer" className="space-y-6">
