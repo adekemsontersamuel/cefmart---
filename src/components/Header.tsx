@@ -192,6 +192,11 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const nextRouter = useNextRouter();
   const router = useRouterStateSafe();
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const categoryRef = useRef<HTMLDivElement>(null);
 
   const mapPageToPath = (p: Page) => {
     switch (p) {
@@ -225,6 +230,11 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const doNavigate = (p: Page) => {
+    setIsCategoryOpen(false);
+    setActiveCategory(null);
+    setIsMobileMenuOpen(false);
+    setIsMobileSearchOpen(false);
+
     // Prefer Next router when available (client navigation with real paths)
     if (nextRouter && typeof nextRouter.push === "function") {
       nextRouter.push(mapPageToPath(p));
@@ -241,10 +251,6 @@ export const Header: React.FC<HeaderProps> = ({
     // Last resort: use provided navigate prop
     if (navigateTo) navigateTo(p);
   };
-  // State for the category dropdown
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<number | null>(null);
-  const categoryRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -264,10 +270,21 @@ export const Header: React.FC<HeaderProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+        setIsMobileSearchOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <header className="font-sans text-gray-900">
+    <header className="font-sans text-gray-900 overflow-x-clip">
       {/* Top Bar */}
-      <div className="bg-gray-800 text-white text-sm">
+      <div className="hidden bg-gray-800 text-white text-sm md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-10">
             <div className="flex items-center space-x-4">
@@ -293,7 +310,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Main Header */}
       <div className="bg-[#e7e9ec] border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between max-md:flex-wrap max-md:gap-3 max-md:py-3">
+          <div className="flex h-16 items-center justify-between">
             {/* Logo - EXACTLY AS REQUESTED */}
             <button
               onClick={() => doNavigate("home")}
@@ -306,8 +323,8 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </button>
 
-            {/* Search Bar */}
-            <div className="mx-8 max-w-2xl flex-1 max-md:order-3 max-md:mx-0 max-md:w-full">
+            {/* Search Bar (Desktop) */}
+            <div className="mx-8 hidden max-w-2xl flex-1 md:block">
               <div className="relative">
                 <input
                   type="text"
@@ -320,8 +337,8 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             </div>
 
-            {/* Action Icons */}
-            <div className="flex items-center space-x-4 max-md:space-x-2">
+            {/* Desktop Actions */}
+            <div className="hidden items-center space-x-4 md:flex">
               {/* Login & Register Buttons */}
               <div className="flex items-center space-x-2">
                 <Button
@@ -375,12 +392,142 @@ export const Header: React.FC<HeaderProps> = ({
                 <User className="h-6 w-6" />
               </button>
             </div>
+
+            {/* Mobile Actions: Search, Cart, User, Hamburger */}
+            <div className="flex items-center space-x-1 md:hidden">
+              <button
+                onClick={() => setIsMobileSearchOpen((prev) => !prev)}
+                className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-cyan-500"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+              {userType === "customer" && (
+                <button
+                  onClick={() => doNavigate("cart")}
+                  className="relative rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-cyan-500"
+                  aria-label="Cart"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  {cartItemsCount > 0 && (
+                    <Badge className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 p-0 flex items-center justify-center text-[10px] text-white">
+                      {cartItemsCount}
+                    </Badge>
+                  )}
+                </button>
+              )}
+              <button
+                onClick={() =>
+                  doNavigate(
+                    userType === "vendor"
+                      ? "vendor-dashboard"
+                      : "customer-dashboard",
+                  )
+                }
+                className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-cyan-500"
+                aria-label="Account"
+              >
+                <User className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-cyan-500"
+                aria-label="Menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {isMobileSearchOpen && (
+            <div className="pb-3 md:hidden">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="w-full rounded-md border border-gray-300 bg-white py-2.5 pl-4 pr-11 focus:border-transparent focus:ring-2 focus:ring-cyan-500"
+                />
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-600">
+                  <Search className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {isMobileMenuOpen && (
+            <div className="border-t border-gray-300 py-3 md:hidden">
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={() => doNavigate("about")}
+                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => doNavigate("products")}
+                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                >
+                  Shop
+                </button>
+                <button
+                  onClick={() => doNavigate("products")}
+                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                >
+                  Product
+                </button>
+                <button
+                  onClick={() => doNavigate("about")}
+                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                >
+                  FAQs
+                </button>
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => doNavigate("login")}
+                  className="h-9 w-full"
+                >
+                  Login
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => doNavigate("register")}
+                  className="h-9 w-full bg-green-600 hover:bg-green-700"
+                >
+                  Register
+                </Button>
+              </div>
+              <div className="mt-3 space-y-1 rounded-md border border-gray-300 bg-white p-2">
+                <div className="px-2 py-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  All Categories
+                </div>
+                {CATEGORIES.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => doNavigate("products")}
+                    className="flex w-full items-center justify-between rounded px-2 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="flex items-center space-x-2">
+                      <category.icon className="h-4 w-4 text-gray-400" />
+                      <span>{category.name}</span>
+                    </span>
+                    <ChevronRight className="h-3 w-3 text-gray-400" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Navigation Bar */}
-      <div className="bg-gray-100 border-b relative">
+      <div className="relative hidden border-b bg-gray-100 md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-12 items-center">
             {/* --- All Categories (Functional Dropdown) --- */}
@@ -411,46 +558,6 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Dropdown Menu Content */}
               {isCategoryOpen && (
                 <div className="absolute top-full left-0 mt-1 w-64 bg-white shadow-xl border border-gray-200 rounded-md z-50 overflow-visible">
-                  <div className="border-b border-gray-200 p-2 md:hidden">
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        onClick={() => {
-                          doNavigate("about");
-                          setIsCategoryOpen(false);
-                        }}
-                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
-                      >
-                        About
-                      </button>
-                      <button
-                        onClick={() => {
-                          doNavigate("products");
-                          setIsCategoryOpen(false);
-                        }}
-                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
-                      >
-                        Shop
-                      </button>
-                      <button
-                        onClick={() => {
-                          doNavigate("products");
-                          setIsCategoryOpen(false);
-                        }}
-                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
-                      >
-                        Product
-                      </button>
-                      <button
-                        onClick={() => {
-                          doNavigate("about");
-                          setIsCategoryOpen(false);
-                        }}
-                        className="rounded-md border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
-                      >
-                        FAQs
-                      </button>
-                    </div>
-                  </div>
                   <div className="py-1">
                     {CATEGORIES.map((category) => (
                       <div

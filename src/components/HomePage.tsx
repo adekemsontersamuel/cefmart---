@@ -73,18 +73,18 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
   ];
 
   return (
-    <div className="space-y-14 max-sm:space-y-10">
+    <div className="space-y-14 max-sm:space-y-9">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20 max-lg:py-16 max-sm:py-12">
+      <section className="relative bg-gradient-to-r from-green-50 to-blue-50 py-20 max-lg:py-16 max-sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-sm:gap-8">
-            <div className="space-y-8 max-sm:space-y-6">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 max-sm:gap-7">
+            <div className="space-y-8 max-sm:space-y-5">
               <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl tracking-tight max-sm:text-3xl">
+                <h1 className="text-4xl tracking-tight lg:text-6xl max-sm:text-[2.35rem] max-sm:leading-tight">
                   Fresh From Farm
                   <span className="text-green-600"> To Your Table</span>
                 </h1>
-                <p className="text-xl text-gray-600 max-w-lg max-sm:text-base">
+                <p className="max-w-lg text-xl text-gray-600 max-sm:text-[1.2rem] max-sm:leading-relaxed">
                   Connect directly with local farmers and trusted vendors. Get
                   the freshest produce, grains, and more delivered straight to
                   your doorstep.
@@ -109,7 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigateTo }) => {
                 </Button>
               </div>
 
-              <div className="flex items-center space-x-8 pt-4 max-sm:flex-wrap max-sm:gap-6 max-sm:space-x-0 max-sm:pt-2">
+              <div className="grid grid-cols-3 gap-3 pt-2 sm:flex sm:items-center sm:space-x-8 sm:pt-4">
                 <div className="text-center">
                   <div className="text-2xl">500+</div>
                   <div className="text-sm text-gray-600">Trusted Vendors</div>
