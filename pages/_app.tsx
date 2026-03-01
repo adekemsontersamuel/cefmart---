@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import "../src/index.css";
 import { Header } from "../src/components/Header";
 import { CartProvider, useCartSafe } from "../src/context/CartContext";
@@ -21,6 +22,22 @@ const AppShell = ({ Component, pageProps }: AppShellProps) => {
 
   return (
     <>
+      <Head>
+        <meta
+          name="description"
+          content="Empowering the food value chain through technology"
+        />
+        <meta
+          property="og:description"
+          content="Empowering the food value chain through technology"
+        />
+        <meta property="og:image" content="/brand1.png" />
+        <meta
+          name="twitter:description"
+          content="Empowering the food value chain through technology"
+        />
+        <meta name="twitter:image" content="/brand1.png" />
+      </Head>
       {!hideHeader && (
         <Header
           navigateTo={() => {}}
