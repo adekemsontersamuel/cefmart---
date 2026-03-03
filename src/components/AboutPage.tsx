@@ -1,21 +1,12 @@
 import React from "react";
 import type { Page } from "../types/navigation";
 import {
-  Users,
-  Leaf,
-  Truck,
-  Shield,
-  Heart,
-  CheckCircle,
-  Cpu,
-  Landmark,
-  GraduationCap,
-  TrendingUp,
-  Award,
   Globe,
-  Sprout,
-  Package,
-  Store,
+  Sparkles,
+  ArrowRight,
+  Landmark,
+  Building2,
+  Cpu,
 } from "lucide-react";
 
 interface AboutPageProps {
@@ -23,424 +14,212 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ navigateTo }) => {
-  const heroStats = [
-    {
-      value: "3M+",
-      label: "Kg Produce Delivered",
-      icon: <Package className="h-8 w-8" />,
-    },
-    {
-      value: "300+",
-      label: "Jobs Created",
-      icon: <Users className="h-8 w-8" />,
-    },
+  const lossImpact = [
+    "Reduced farmer income and increased rural poverty",
+    "Artificial food scarcity and inflation in urban markets",
+    "Wasted labor, capital, and natural resources",
   ];
 
-  const stats = [
-    {
-      value: "500+",
-      label: "Happy Customers",
-      icon: <Users className="h-6 w-6" />,
-    },
-    {
-      value: "100+",
-      label: "Trusted Vendors",
-      icon: <Store className="h-6 w-6" />,
-    },
-    {
-      value: "24/7",
-      label: "Support Available",
-      icon: <Shield className="h-6 w-6" />,
-    },
-    {
-      value: "100%",
-      label: "Fresh & Organic",
-      icon: <Leaf className="h-6 w-6" />,
-    },
-  ];
-
-  const values = [
-    {
-      icon: <Sprout className="h-16 w-16 text-green-600" />,
-      title: "Farm-to-Table Direct",
-      description:
-        "Zero middlemen. Connect directly with local farmers for the freshest produce at the best prices, supporting agriculture at its source.",
-    },
-    {
-      icon: <Heart className="h-16 w-16 text-green-600" />,
-      title: "Community Empowerment",
-      description:
-        "Every purchase supports farming families and strengthens rural economies across Nigeria, creating sustainable livelihoods.",
-    },
-    {
-      icon: <CheckCircle className="h-16 w-16 text-green-600" />,
-      title: "Quality Guaranteed",
-      description:
-        "Multi-stage verification ensures only premium-grade, fresh products reach your doorstep with our satisfaction guarantee.",
-    },
-    {
-      icon: <Globe className="h-16 w-16 text-green-600" />,
-      title: "Sustainable Practices",
-      description:
-        "Eco-friendly packaging and responsible farming practices for a healthier planet and conscious consumption.",
-    },
+  const platformOutcomes = [
+    "Reduce spoilage through faster market linkage",
+    "Improve demand forecasting with structured data",
+    "Strengthen rural-to-urban supply chains",
+    "Increase farmer profitability and traceability",
+    "Support financial inclusion through transaction records",
   ];
 
   const partners = [
     {
+      name: "CEFTER",
+      subtitle: "Center for Food Technology and Research",
+      icon: <Landmark className="h-6 w-6 text-[#ef5b4f]" />,
+      description:
+        "A flagship research center of Benue State University driving food systems research, rural economic interventions, and agricultural productivity.",
+    },
+    {
       name: "Alpha N&S Technologies",
-      role: "Technology Infrastructure Partner",
+      subtitle: "Engineering & Infrastructure Partner",
+      icon: <Cpu className="h-6 w-6 text-green-600" />,
       description:
-        "Delivering enterprise-grade AI, cloud infrastructure, and real-time analytics powering our digital marketplace.",
-      icon: <Cpu className="h-14 w-14 text-blue-600" />,
-      borderColor: "border-blue-200",
-      bgColor: "bg-blue-50",
+        "Alpha N&S Technologies is an engineering and technology company founded to build scalable solutions that solve fundamental structural problems across commerce, EdTech, and digital infrastructure.",
     },
     {
-      name: "Cefmart Marketplace",
-      role: "E-Commerce Platform",
+      name: "Cityhackz",
+      subtitle: "Commerce Innovation Arm",
+      icon: <Building2 className="h-6 w-6 text-slate-700" />,
       description:
-        "The beating heart of our ecosystem—connecting indigenous vendors with customers across Nigeria and beyond.",
-      icon: <Leaf className="h-14 w-14 text-green-600" />,
-      borderColor: "border-green-200",
-      bgColor: "bg-green-50",
-    },
-    {
-      name: "Fr. Adasu University",
-      role: "Research & Academic Partner",
-      description:
-        "Joint initiatives in sustainable agriculture research, agritech innovation, and student entrepreneurship programs.",
-      icon: <GraduationCap className="h-14 w-14 text-indigo-600" />,
-      borderColor: "border-indigo-200",
-      bgColor: "bg-indigo-50",
-    },
-    {
-      name: "Benue State Government",
-      role: "Strategic Government Partner",
-      description:
-        "Policy support and economic initiatives to promote indigenous agriculture and digital commerce in Benue State.",
-      icon: <Landmark className="h-14 w-14 text-emerald-600" />,
-      borderColor: "border-emerald-200",
-      bgColor: "bg-emerald-50",
+        "Cityhackz is Nigeria's first indigenous virtual marketplace, pioneering the digitisation of local markets through artificial intelligence, software engineering, and research-driven insights. Our mission is to bridge African commerce with the global economy, empowering local traders, students, and entrepreneurs with the technology, tools, and research needed to thrive.",
     },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Hero Section - Clean & Modern */}
-      <section className="relative bg-gray-50 py-20 px-4 max-sm:py-12">
-        <div className="max-w-5xl mx-auto text-center space-y-8 max-sm:space-y-5">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-sm:text-3xl">
-            Connecting Farms to Families Across Nigeria
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed max-sm:text-base">
-            From Benue to the world, CEFMART is redefining agro-commerce with an
-            emphasis on quality, variety, and convenience. We are on a mission
-            to deliver exceptional fresh produce right to your doorstep—wherever
-            you are.
-          </p>
-        </div>
-      </section>
-
-      {/* Hero Image with Stats Overlay */}
-      <section className="relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 max-sm:-mt-4">
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            {/* Image Placeholder with Gradient Overlay */}
-            <div className="relative bg-gradient-to-br from-green-500 to-emerald-700 h-[500px] flex items-center justify-center max-sm:h-[340px]">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative z-10 text-center text-white p-8 max-sm:p-4">
-                <Leaf className="h-32 w-32 mx-auto mb-6 opacity-40 max-sm:h-20 max-sm:w-20 max-sm:mb-4" />
-                <h3 className="text-4xl font-bold mb-4 max-sm:text-2xl">
-                  Farm Fresh Excellence
-                </h3>
-                <p className="text-xl opacity-90 max-sm:text-base">
-                  From our fields to your table
-                </p>
-              </div>
-            </div>
-
-            {/* Stats Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8 max-sm:p-4">
-              <div className="max-w-5xl mx-auto grid grid-cols-2 gap-8 max-sm:gap-4">
-                {heroStats.map((stat, index) => (
-                  <div key={index} className="text-center text-white">
-                    <div className="flex items-center justify-center mb-2 opacity-80">
-                      {stat.icon}
-                    </div>
-                    <div className="text-4xl md:text-5xl font-bold mb-2 max-sm:text-2xl">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm md:text-base opacity-90">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section - Dark Background */}
-      <section className="bg-gray-900 text-white py-20 px-4 mt-20 max-sm:mt-12 max-sm:py-14">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 max-sm:text-3xl">Our Mission</h2>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            At CEFMART, our mission is to deliver exceptional fresh produce by
-            focusing on quality, variety, and sustainability. We are committed
-            to providing farm-fresh, delicious food with outstanding service,
-            creating value for our customers and driving growth. As we continue
-            to innovate and expand, we aim to build a strong and enduring brand
-            that stands out for its excellence and impact.
-          </p>
-        </div>
-      </section>
-
-      {/* Stats Grid */}
-      <section className="py-20 px-4 bg-white max-sm:py-14">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-4 hover:bg-green-600 hover:text-white transition-all group">
-                  <div className="text-green-600 group-hover:text-white transition-colors">
-                    {stat.icon}
-                  </div>
-                </div>
-                <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2 max-sm:text-3xl">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Values Grid */}
-      <section className="py-20 px-4 bg-gray-50 max-sm:py-14">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 max-sm:mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 max-sm:text-3xl">
-              Why Choose CEFMART?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto max-sm:text-base">
-              We're revolutionizing how Nigeria shops for fresh produce through
-              innovation, integrity, and community impact.
+    <div className="min-h-screen bg-[#f4f5f7] font-['Manrope','Segoe_UI',sans-serif] text-slate-800">
+      <section className="px-4 py-12 md:px-8 md:py-16">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
+          <div className="flex h-full flex-col space-y-5">
+            <h1 className="font-['Sora','Manrope',sans-serif] text-4xl font-bold leading-tight text-[#ef5b4f] md:text-5xl">
+              Who We Are
+            </h1>
+            <p className="text-lg leading-relaxed text-slate-700">
+              The Center for Food Technology and Research (CEFTER) at Benue
+              State University, in strategic collaboration with Alpha N&S
+              Technologies through
+              <span className="font-semibold text-slate-900"> Cityhackz</span>,
+              Nigeria’s first indigenous research-driven virtual marketplace,
+              continues to advance Nigeria’s agricultural transformation using
+              applied research, structured market data, and unified commerce
+              technology.
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 text-center"
-              >
-                <div className="flex justify-center mb-6">{value.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              Benue State is widely recognized as the{" "}
+              <span className="font-semibold">Food Basket of the Nation</span>,
+              yet post-harvest losses remain a major structural challenge across
+              Nigeria. Annual losses for perishable agricultural produce are
+              frequently estimated between{" "}
+              <span className="font-semibold">30% and 50%</span>, significantly
+              reducing farmer incomes, disrupting supply chains, and weakening
+              market stability.
+            </p>
 
-      {/* Trust Guarantees */}
-      <section className="py-20 px-4 bg-white max-sm:py-14">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-                <Shield className="h-10 w-10 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                100% Secure
-              </h3>
-              <p className="text-gray-600">
-                Bank-grade encryption protects every transaction and your
-                personal data.
-              </p>
-            </div>
+            <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              In response, CEFTER is partnering strategically with Alpha N&S
+              Technologies, leveraging the{" "}
+              <span className="font-semibold text-slate-900">
+                Cityhackz Unified Marketplace Infrastructure
+              </span>
+              to build{" "}
+              <span className="font-semibold text-slate-900">CEFmart</span>, a
+              research-backed agro-commerce platform designed to transform how
+              food moves efficiently from farm clusters to structured markets.
+            </p>
 
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-                <Truck className="h-10 w-10 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Fast Delivery
-              </h3>
-              <p className="text-gray-600">
-                Same-day delivery available. Your produce arrives garden-fresh
-                at your door.
-              </p>
-            </div>
+            <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              Through indigenous innovation combined with modern digital
+              systems, real-time data visibility, and commerce intelligence,
+              this partnership aims to reduce waste, increase farmer
+              profitability, enhance transparency, and strengthen Benue State’s
+              role in Nigeria’s national food security framework.
+            </p>
 
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-                <Award className="h-10 w-10 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Quality Guaranteed
-              </h3>
-              <p className="text-gray-600">
-                Not satisfied? Full refund or replacement with our satisfaction
-                guarantee.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Alpha N&S Technologies Highlight */}
-      <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 max-sm:py-14">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white space-y-6">
-              <div className="flex items-center space-x-3 text-blue-400 mb-4">
-                <Cpu className="h-6 w-6" />
-                <span className="font-bold tracking-wider uppercase text-sm">
-                  Technology Partner
-                </span>
-              </div>
-
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight max-sm:text-3xl">
-                Powered by Alpha N&S Technologies
-              </h2>
-
-              <p className="text-lg text-slate-300 leading-relaxed">
-                Our platform runs on enterprise-grade infrastructure from Alpha
-                N&S Technologies, delivering real-time inventory management,
-                AI-powered recommendations, secure payment processing, and 99.9%
-                uptime reliability.
-              </p>
-
-              <div className="space-y-3 pt-4">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">
-                    Cloud-native architecture for infinite scalability
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">
-                    Machine learning for smart product matching
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-400 flex-shrink-0" />
-                  <span className="text-slate-200">
-                    Advanced fraud detection and prevention
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                <a
-                  href="https://alphans.tech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-white border-2 border-white/30 bg-white/10 hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold transition-all max-sm:w-full max-sm:justify-center"
+            <div className="mt-16 space-y-4 rounded-2xl bg-white p-6 shadow-sm">
+              {lossImpact.map((item) => (
+                <p
+                  key={item}
+                  className="text-sm font-medium leading-relaxed text-slate-600"
                 >
-                  Visit Alpha N&S Tech
-                  <TrendingUp className="ml-2 h-5 w-5" />
-                </a>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl border-2 border-white/20 p-12 text-center max-sm:p-8">
-                <Cpu className="h-32 w-32 mx-auto text-white/90 mb-6" />
-                <h3 className="text-4xl font-bold text-white mb-4 max-sm:text-3xl">
-                  ALPHA N&S
-                </h3>
-                <p className="text-white/80 text-lg">
-                  Building Digital Infrastructure for Africa
+                  • {item}
                 </p>
-                <div className="flex justify-center space-x-2 mt-8">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Strategic Partners */}
-      <section className="py-20 px-4 bg-white max-sm:py-14">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 max-sm:mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 max-sm:text-3xl">
-              Our Strategic Partners
-            </h2>
-            <p className="text-xl text-gray-600 max-sm:text-base">
-              Collaboration drives innovation and creates lasting impact
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {partners.map((partner, index) => (
-              <div
-                key={index}
-                className={`bg-white p-10 rounded-2xl border-2 ${partner.borderColor} shadow-md hover:shadow-xl transition-all duration-300 max-sm:p-6`}
-              >
-                <div className="flex items-start space-x-6 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
-                  <div
-                    className={`flex-shrink-0 ${partner.bgColor} p-5 rounded-2xl border ${partner.borderColor}`}
-                  >
-                    {partner.icon}
-                  </div>
-
-                  <div className="flex-1 space-y-3">
-                    <h3 className="text-2xl font-bold text-gray-900 max-sm:text-xl">
-                      {partner.name}
-                    </h3>
-                    <div className="text-green-600 text-sm font-bold uppercase tracking-wide">
-                      {partner.role}
-                    </div>
-                    <p className="text-gray-600 leading-relaxed">
-                      {partner.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 px-4 bg-green-600 max-sm:py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight max-sm:text-3xl">
-            Ready to Experience Farm-Fresh Quality?
-          </h2>
-          <p className="text-green-50 text-xl mb-10 leading-relaxed max-sm:text-base">
-            Join thousands of satisfied customers who trust CEFMART for premium
-            quality, unbeatable freshness, and community-driven values.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
             <button
-              className="bg-white text-green-700 hover:bg-green-50 font-bold px-10 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all text-lg max-sm:w-full max-sm:text-base"
+              className="mt-16 inline-flex w-fit items-center rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
               onClick={() => navigateTo("products")}
             >
-              Start Shopping Now
+              Explore Marketplace
+              <ArrowRight className="ml-2 h-4 w-4" />
             </button>
-            <button
-              className="border-2 border-white text-white hover:bg-white/10 font-bold px-10 py-4 rounded-full text-lg transition-all max-sm:w-full max-sm:text-base"
-              onClick={() => navigateTo("register")}
-            >
-              Become a Vendor
-            </button>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-white/70 bg-white shadow-xl">
+            <img
+              src="/brand1.png"
+              alt="Cefmart market research and work environment"
+              className="h-[520px] w-full object-cover md:h-[580px] lg:h-[620px]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-14 md:px-8">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-2">
+          <div className="relative overflow-hidden rounded-3xl border border-[#e7e9ee] bg-[#f8fafc] p-6 shadow-sm">
+            <img
+              src="/brand2.jpg"
+              alt="Cefmart work environment"
+              className="h-[230px] w-full rounded-2xl object-cover md:h-[270px]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/35 via-transparent to-transparent" />
+          </div>
+
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 rounded-full bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.15em] text-green-700">
+              <Sparkles className="h-4 w-4" />
+              Built for Modern Trade
+            </div>
+            <h2 className="font-['Sora','Manrope',sans-serif] text-4xl font-bold leading-tight text-[#ef5b4f] md:text-5xl">
+              Our Technology
+            </h2>
+            <p className="text-lg leading-relaxed text-slate-700">
+              CEFmart connects rural farmers, aggregators, traders, processors,
+              retailers, and institutional buyers through a structured digital
+              system that improves visibility, pricing transparency, and
+              distribution efficiency.
+            </p>
+            <p className="text-lg leading-relaxed text-slate-700">
+              This is more than a storefront. The platform combines marketplace
+              infrastructure, data intelligence, and vendor tooling to reduce
+              food spoilage, improve demand forecasting, and strengthen
+              rural-to-urban supply chains at scale.
+            </p>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {platformOutcomes.map((outcome) => (
+                <div
+                  key={outcome}
+                  className="rounded-xl border border-[#e7e9ee] bg-[#f8fafc] px-4 py-3 text-sm font-semibold text-slate-600"
+                >
+                  {outcome}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#ebedf1] px-4 py-16 md:px-8 md:py-20">
+        <div className="mx-auto w-full max-w-6xl">
+          <h2 className="text-center font-['Sora','Manrope',sans-serif] text-4xl font-bold text-[#ef5b4f] md:text-5xl">
+            Our Partners
+          </h2>
+          <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-relaxed text-slate-700">
+            CEFmart exists at the intersection of agriculture, technology, and
+            economic development. Our model is powered by institutional
+            research, indigenous innovation, and scalable engineering.
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:gap-8 md:[grid-auto-rows:1fr]">
+            {partners.map((partner) => (
+              <article
+                key={partner.name}
+                className="flex h-full min-h-[340px] flex-col rounded-2xl border border-white/70 bg-white p-7 shadow-sm md:min-h-[370px] md:p-8"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#f4f5f7] p-3">
+                  {partner.icon}
+                </div>
+                <h3 className="min-h-[3.5rem] font-['Sora','Manrope',sans-serif] text-xl font-bold text-slate-900">
+                  {partner.name}
+                </h3>
+                <p className="mt-2 min-h-[2.75rem] text-sm font-semibold text-[#ef5b4f]">
+                  {partner.subtitle}
+                </p>
+                <p className="mt-5 flex-1 text-[0.95rem] leading-7 text-slate-600">
+                  {partner.description}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-slate-600">
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+              <Globe className="mr-2 inline h-4 w-4 text-green-600" />
+              From Farm to Market
+            </span>
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+              Research to Revenue
+            </span>
+            <span className="rounded-full bg-white px-4 py-2 shadow-sm">
+              Benue to West Africa
+            </span>
           </div>
         </div>
       </section>

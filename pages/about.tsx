@@ -1,6 +1,7 @@
 import React from "react";
 import AboutPage from "../src/components/AboutPage";
 import { useRouter } from "next/router";
+import { Footer } from "../src/components/Footer";
 
 export default function About() {
   const router = useRouter();
@@ -9,13 +10,18 @@ export default function About() {
   };
 
   return (
-    <AboutPage
-      navigateTo={(p: any) => {
-        // map p (Page keys) to paths if needed
-        if (p === "products") return navigateTo("/products");
-        if (p === "register") return navigateTo("/register");
-        return navigateTo("/");
-      }}
-    />
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1">
+        <AboutPage
+          navigateTo={(p: any) => {
+            // map p (Page keys) to paths if needed
+            if (p === "products") return navigateTo("/products");
+            if (p === "register") return navigateTo("/register");
+            return navigateTo("/");
+          }}
+        />
+      </main>
+      <Footer />
+    </div>
   );
 }
